@@ -12,13 +12,14 @@ import EvStationIcon from '@material-ui/icons/EvStation';
 import { ConsoShow } from './pages/Conso/ConsoShow';
 import { ConsoCreate } from './pages/Conso/ConsoCreate';
 import { ConsoEdit } from './pages/Conso/ConsoEdit';
+import authProvider from './pages/authProvider';
 
 const dataProvider = simpleRestProvider('http://localhost:1337');
 
 const App = () => (
-  <Admin dashboard={Dashboard} dataProvider={dataProvider}>
-    <Resource name="clients" list={UserList} show={UserShow} create={UserCreate} edit={UserEdit} icon={PeopleIcon}/>
-    <Resource name="consommations" list={ConsoList} show={ConsoShow} create={ConsoCreate} edit={ConsoEdit} icon={EvStationIcon} /> 
+  <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
+    <Resource name="clients" list={UserList} show={UserShow} create={UserCreate} edit={UserEdit} icon={PeopleIcon} />
+    <Resource name="consommations" list={ConsoList} show={ConsoShow} create={ConsoCreate} edit={ConsoEdit} icon={EvStationIcon} />
   </Admin>
 );
 
