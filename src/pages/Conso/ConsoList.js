@@ -1,8 +1,15 @@
-import { Datagrid, EditButton, List, ShowButton, TextField } from 'ra-ui-materialui';
+import { CreateButton, Datagrid, EditButton, ExportButton, List, ShowButton, TextField, TopToolbar } from 'ra-ui-materialui';
 import React from 'react';
 
+const ActionButton = ({basePath, data }) =>(
+    <TopToolbar>
+        <CreateButton label="Creer" basePath={basePath} record={data} />
+        <ExportButton label="Exporter" basePath={basePath} record={data} />
+    </TopToolbar>
+)
+
 export const ConsoList = props => (
-    <List {...props}>
+    <List actions={<ActionButton />} {...props}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="mois" />
@@ -10,8 +17,8 @@ export const ConsoList = props => (
             <TextField source="valeur" />
             <TextField label="Nom" source="client.nom" />
             <TextField label="Prenom" source="client.prenom" />
-            <ShowButton basePath="/consommations" label="Plus" record={props} />
-            <EditButton />
+            <ShowButton basePath="/consommations" label="Detail" record={props} />
+            <EditButton label="Modifier"/>
         </Datagrid>
     </List>
 )

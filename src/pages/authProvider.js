@@ -9,7 +9,6 @@ export default {
             body: JSON.stringify({ identifier, password }),
             headers: new Headers({ 'Content-Type': 'application/json'})
         });
-        console.log(request.body);
         return fetch(request)
             .then(response => {
                 if (response.status < 200 || response.status >= 300) {
